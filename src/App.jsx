@@ -1,7 +1,7 @@
 // App.jsx
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import Home from "./page/home";
+import Home from "./page/Home";
 import CreateMovie from "./page/Create";
 import PopularMovie from "./page/Popular";
 import NowPlayingMovie from "./page/NowPlaying";
