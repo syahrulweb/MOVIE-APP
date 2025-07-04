@@ -1,14 +1,28 @@
 import StyledMovie from "./Movie.styled";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 function Movie(props) {
   const { movie } = props;
-  const tmdbImage = `http://image.tmdb.org/t/p/w300/${movie.poster_path}`;
+
+  // 1. Definisikan gambar placeholder
+  const placeholderImage = 'https://via.placeholder.com/300x450?text=No+Image+Available';
+
+  // 2. Tentukan URL gambar yang akan digunakan
+  // Prioritaskan movie.poster (jika ada dan valid)
+  // Lalu cek movie.poster_path dari TMDB
+  // Jika keduanya tidak ada, gunakan placeholderImage
+  const finalImageUrl = movie.poster 
+    ? movie.poster // Jika ada URL poster kustom
+    : movie.poster_path 
+      ? `http://image.tmdb.org/t/p/w300/${movie.poster_path}` // Jika ada poster_path dari TMDB
+      : placeholderImage; // Jika tidak ada keduanya, pakai placeholder
+  
   const year = movie.year || movie.release_date;
 
   return (
     <StyledMovie>
-      <img src={movie.poster || tmdbImage} alt={movie.title} />
+      {/* Gunakan finalImageUrl yang sudah divalidasi */}
+      <img src={finalImageUrl} alt={movie.title} /> 
       <Link to={`/movie/${movie.id}`}> 
         <h3>{movie.title}</h3>
       </Link>
