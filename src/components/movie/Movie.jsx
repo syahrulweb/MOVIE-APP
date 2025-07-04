@@ -1,5 +1,5 @@
-import StyledMovie from "./Movie.styled";
-import { Link } from "react-router-dom";
+import StyledMovie from "./Movie.styled"; // Ini sudah di atas
+import { Link } from "react-router-dom";   // Ini juga sudah di atas
 
 function Movie(props) {
   const { movie } = props;
@@ -14,7 +14,7 @@ function Movie(props) {
   const finalImageUrl = movie.poster 
     ? movie.poster // Jika ada URL poster kustom
     : movie.poster_path 
-      ? `http://image.tmdb.org/t/p/w300/${movie.poster_path}` // Jika ada poster_path dari TMDB
+      ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` // Pastikan ini HTTPS!
       : placeholderImage; // Jika tidak ada keduanya, pakai placeholder
   
   const year = movie.year || movie.release_date;
