@@ -32,7 +32,7 @@ function AddMovie() {
       title: formData.title,
       year: formData.year,
       type: "Movie",
-      poster: "/public/ayuy.png",  // Just a placeholder for poster image
+      poster: "/ayuy.png",  // Just a placeholder for poster image
     };
     setMovies([...movies, newMovie]);  // Add new movie to the state
   };
